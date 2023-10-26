@@ -56,7 +56,7 @@
 }
 
 .toggle-button.active {
-  background-color: red;
+  /* background-color: red; */
   color: white;
 }
 

@@ -8,6 +8,8 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import MyVerticallyCenteredModal from "./Modals";
 import { useState } from "react";
 import EmailModal from "./EmailModal";
+import "./Header.css"
+import { Link, scroller } from "react-scroll";
 
 function Header() {
   const [showModal, setShowModal] = useState(false);
@@ -26,7 +28,13 @@ function Header() {
      setShowModal(false);
    };
 
-  
+  const scrollToSection = (section) => {
+    scroller.scrollTo(section, {
+      duration: 1000,
+      delay: 0,
+      // smooth: "easeInOutQuint",
+    });
+  };
   //  CSS-----------------------
    const customTitleStyle = {
      fontSize: "18px",
@@ -43,10 +51,10 @@ function Header() {
         <Navbar
           key={expand}
           expand={expand}
-          sticky="top"
-          className="bg-white mb-3 px-lg-5 pt-lg-5 pb-lg-1 p-sm-2 "
+          // sticky="top"
+          className="bg-white mb-3 p-lg-4   pb-lg-4 p-sm-4"
         >
-          <Container fluid className="p-1">
+          <Container fluid className="p-0">
             <Navbar.Brand href="#">
               {" "}
               <img src="./logo.jpg" alt="" style={{ height: "60px" }} />{" "}
@@ -67,50 +75,58 @@ function Header() {
                   className="justify-content-end flex-grow-1 pe-3 "
                   style={{}}
                 >
-                  <Nav.Link
-                    href="#action1"
-                    className="headlink"
+                  <Link
+                    to="features"
+                    // className="headlink"
                     style={{
                       fontSize: "18px",
                       marginRight: "17px",
                       color: "#084aa6",
                       fontWeight: "500",
+                      cursor: "pointer",
+                      padding: "10px",
                     }}
+                    onClick={() => scrollToSection("features")}
                   >
-                    Home
-                  </Nav.Link>
+                    Our services
+                  </Link>
 
-                  <Nav.Link
-                    href="#action2"
+                  <Link
+                    to="faq"
                     style={{
                       fontSize: "18px",
                       marginRight: "17px",
                       color: "#084aa6",
                       fontWeight: "500",
+                      cursor: "pointer",
+                      padding: "10px",
                     }}
+                    onClick={() => scrollToSection("faq")}
                   >
-                    About Us
-                  </Nav.Link>
-                  <Nav.Link
+                    Faq
+                  </Link>
+                  <Link
                     style={{
                       fontSize: "18px",
                       marginRight: "17px",
                       color: "#084aa6",
                       fontWeight: "500",
+                      cursor: "pointer",
+                      padding: "10px",
                     }}
                     onClick={handleSubmit}
                   >
-                    book slot
-                  </Nav.Link>
+                    Book a Slot
+                  </Link>
                   <MyVerticallyCenteredModal
                     show={showModal}
                     handleClose={handleCloseModal}
                   />
                   <NavDropdown
                     title={
-                      <span style={{ ...customTitleStyle, ...customColor }}>
+                      <Link style={{ ...customTitleStyle, ...customColor }}>
                         Investors
-                      </span>
+                      </Link>
                     }
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                     style={{
@@ -121,26 +137,24 @@ function Header() {
                     }}
                   >
                     <NavDropdown.Item href="#action3">
-                      {/* <Button variant="primary" onClick={handleShow}>
-                        Launch demo modal
-                      </Button> */}
+                    
                       <EmailModal show={show} onHide={handleClose} />
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action4">
-                      Customer Dashboard
-                    </NavDropdown.Item>
-                    {/* <NavDropdown.Divider /> */}
+                  
                   </NavDropdown>
-                  <Nav.Link
-                    href="#action2"
+                  <Link
+                    to="footer"
                     style={{
                       fontSize: "18px",
                       fontWeight: "500",
                       color: "#084aa6",
+                      cursor: "pointer",
+                      padding: "10px",
                     }}
+                    onClick={() => scrollToSection("footer")}
                   >
                     Contact Us
-                  </Nav.Link>
+                  </Link>
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
