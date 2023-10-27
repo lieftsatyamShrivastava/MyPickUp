@@ -31,9 +31,8 @@ function Banner2() {
             Zero Stress Commute
           </h1>
           <h3 className="my-5" style={{ fontWeight: "500" }}>
-            Weekly & Monthly Subscription based <br />{" "}
-            <span style={{ color: "green" }}>electric</span> rides for daily
-            commute
+            Weekly & Monthly Subscription based <span style={{ color: "green" }}>electric </span> rides for daily
+            commute.
           </h3>
           <Row className="mt-3">
             <Col xs={6} className="px-0">
