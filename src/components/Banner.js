@@ -82,7 +82,7 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
 import "./Banner.css";
 import MyVerticallyCenteredModal from "./Modals";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function Banner() {
   const [showModal, setShowModal] = useState(false);
@@ -112,7 +112,7 @@ function Banner() {
             <h3 className="my-5" style={{ fontWeight: "500" }}>
               Weekly & Monthly Subscription based <br />{" "}
               <span style={{ color: "green" }}>electric</span> rides for daily
-              commute
+              commute.
             </h3>
             <Container>
               <Row className="mt-3">
