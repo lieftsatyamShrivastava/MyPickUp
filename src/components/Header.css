@@ -20,3 +20,6 @@
     padding: 0;
     border: none;
 }
+.navbar-toggler{
+    width: 20%;
+}

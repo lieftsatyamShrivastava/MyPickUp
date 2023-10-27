@@ -1,160 +1,230 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+
 import {
   faFacebook,
   faTwitter,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faLinkedin, faWhatsapp } from "@fortawesome/free-brands-svg-icons"; // Import LinkedIn and WhatsApp icons
 
 import "./footer.css"
+import { Element } from "react-scroll";
+import { Link, scroller } from "react-scroll";
+import MyVerticallyCenteredModal from "./Modals";
+import EmailModal from "./EmailModal";
 
 
 const Footer = () => {
+  const [showModal, setShowModal] = useState(false);
+   const [show, setShow] = useState(false);
+
+   const handleClose = () => setShow(false);
+
+  const handleSubmit = () => {
+    // Perform any necessary submission logic here
+
+    // Show the modal if a mobile number is provided
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+  const scrollToSection = (section) => {
+    scroller.scrollTo(section, {
+      duration: 1000,
+      delay: 0,
+      // smooth: "easeInOutQuint",
+    });
+  }
   return (
-    <Container fluid className="footercss p-5">
-      {/* Header */}
-      {/* <header>
-        <Row>
-          <Col xs={12} className="p-4">
-            <img src="./logo.jpg" alt="Logo" />
-          </Col>
-        </Row>
-      </header> */}
+    <Element name="footer">
+      {" "}
+      <Container fluid className="footercss p-5 section">
+        <main>
+          <Row>
+            {/* Social links */}
+            <Col xs={3} md={3}>
+              <img
+                fluid
+                src="./logodark.png"
+                alt="Logo"
+                style={{ height: "80px" }}
+              />
+            </Col>
+            {/* Quick links */}
+            <Col xs={12} md={3}>
+              <ul className="quick-links" style={{ listStyle: "none" }}>
+                <li>
+                  {" "}
+                  <Link
+                    to="faq"
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: "500",
+                      color: "white",
+                      cursor: "pointer",
+                      padding: "10px",
+                    }}
+                    onClick={() => scrollToSection("faq")}
+                  >
+                    FAQ
+                  </Link>
+                </li>
+                <li>
+                  {" "}
+                  <Link
+                    to="features"
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: "500",
+                      color: "white",
+                      cursor: "pointer",
+                      padding: "10px",
+                    }}
+                    onClick={() => scrollToSection("features")}
+                  >
+                    Our Services
+                  </Link>
+                </li>
+              </ul>
+            </Col>
+            <Col xs={12} md={3}>
+              <ul className="quick-links" style={{ listStyle: "none" }}>
+                {/* <li>
+                  <Link
+                    to="Testimonials"
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: "500",
+                      color: "white",
+                      cursor: "pointer",
+                      padding: "10px",
+                    }}
+                    onClick={() => scrollToSection("Testimonials")}
+                  >
+                    Pitch Desk
+                  </Link>
+                  <EmailModal show={show} onHide={handleClose} />
+                </li> */}
+                <li>
+                  {" "}
+                  <Link
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: "500",
+                      color: "white",
+                      cursor: "pointer",
+                      padding: "10px",
+                    }}
+                    // onClick={() => scrollToSection("faq")}
+                    onClick={handleSubmit}
+                  >
+                    Book a Slot
+                  </Link>
+                  <MyVerticallyCenteredModal
+                    show={showModal}
+                    handleClose={handleCloseModal}
+                  />
+                </li>
+                <li>
+                  <Link
+                    to="Testimonials"
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: "500",
+                      color: "white",
+                      cursor: "pointer",
+                      padding: "10px",
+                    }}
+                    onClick={() => scrollToSection("Testimonials")}
+                  >
+                    Testimonials
+                  </Link>
+                </li>
+              </ul>
+            </Col>
 
-      {/* Main content */}
-      <main>
-        <Row>
-          {/* Social links */}
-          <Col xs={12} md={3}>
-            <img src="./logodark.png" alt="Logo" style={{height:"80px"}}/>
-          </Col>
-          {/* Quick links */}
-          <Col xs={12} md={3}>
-            {/* <h4 className="mb-2">quick links</h4> */}
-            <ul className="quick-links" style={{ listStyle: "none" }}>
-              <li className="my-1">
-                <a
-                  href="link_to_quick_link1"
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                 Home
-                </a>
-              </li>
-              <li className="my-1">
-                <a
-                  href="link_to_quick_link2"
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                  About us
-                </a>
-              </li>
+            <Col xs={12} md={3}>
+              {/* <h4 className="mb-2"> social Links</h4> */}
 
-              <li className="my-1">
-                <a
-                  href="link_to_quick_link3"
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                  Book Slot
-                </a>
-              </li>
-              {/* <li className="my-1">
-                <a
-                  href="link_to_quick_link2"
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                  FAQs
-                </a>
-              </li> */}
-            </ul>
-          </Col>
-          <Col xs={12} md={3}>
-            {/* <h4 className="mb-2">Quick Links</h4> */}
-            <ul className="quick-links" style={{ listStyle: "none" }}>
-              <li className="my-1">
-                <a
-                  href="link_to_quick_link1"
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                 Pitch Deck
-                </a>
-              </li>
-              <li className="my-1">
-                <a
-                  href="link_to_quick_link2"
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                   dashboard
-                </a>
-              </li>
+              <ul
+                className="social-links"
+                style={{
+                  listStyle: "none",
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                }}
+              >
+                <li>
+                  <a
+                    href="mailto:telkestech@mypickup.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ fontSize: "20px", color: "white" }}
+                  >
+                    <FontAwesomeIcon icon={faEnvelope} />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/company/mypickup/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ fontSize: "20px", color: "white" }}
+                  >
+                    <FontAwesomeIcon icon={faLinkedin} />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/mypickup.in/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ fontSize: "20px", color: "white" }}
+                  >
+                    <FontAwesomeIcon icon={faInstagram} />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="http://wa.me/918867712288"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ fontSize: "20px", color: "white" }}
+                  >
+                    <FontAwesomeIcon icon={faWhatsapp} /> {/* WhatsApp icon */}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="tel:+9188677122880"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ fontSize: "20px", color: "white" }}
+                  >
+                    <FontAwesomeIcon icon={faPhone} /> {/* Call icon */}
+                  </a>
+                </li>
+              </ul>
+            </Col>
+          </Row>
+        </main>
+        <hr />
 
-              <li className="my-1">
-                <a
-                  href="link_to_quick_link3"
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                  Contact Us
-                </a>
-              </li>
-              {/* <li className="my-1">
-                <a
-                  href="link_to_quick_link2"
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                  FAQs
-                </a>
-              </li> */}
-            </ul>
-          </Col>
-          <Col xs={12} md={3}>
-            {/* <h4 className="mb-2"> social Links</h4> */}
-            <ul className="social-links" style={{ listStyle: "none" }}>
-              <li>
-                <a
-                  href="your_facebook_link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ fontSize: "20px", color: "white" }}
-                >
-                  <FontAwesomeIcon icon={faFacebook} />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="your_twitter_link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ fontSize: "20px", color: "white" }}
-                >
-                  <FontAwesomeIcon icon={faTwitter} />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="your_instagram_link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ fontSize: "20px", color: "white" }}
-                >
-                  <FontAwesomeIcon icon={faInstagram} />
-                </a>
-              </li>
-            </ul>
-          </Col>
-        </Row>
-      </main>
-      <hr />
-
-      {/* Footer */}
-      <footer>
-        <Row>
-          <Col xs={12}>
-            <p>&copy; 2023 mypickup</p>
-          </Col>
-        </Row>
-      </footer>
-    </Container>
+        {/* Footer */}
+        <footer>
+          <Row>
+            <Col className="text-center" xs={12} style={{}}>
+              <p>&copy; 2023 mypickup</p>
+            </Col>
+          </Row>
+        </footer>
+      </Container>
+    </Element>
   );
 };
 

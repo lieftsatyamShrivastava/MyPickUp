@@ -12,7 +12,7 @@ const Rating = ({ value }) => {
       stars.push(<FontAwesomeIcon key={i} icon={faStar} />);
     }
     if (hasHalfStar) {
-      stars.push(<FontAwesomeIcon icon="fa-solid fa-star" />);
+      stars.push(<FontAwesomeIcon icon="fa-solid fa-star" style={{color:"yellow"}} />);
     }
     return stars;
   };
