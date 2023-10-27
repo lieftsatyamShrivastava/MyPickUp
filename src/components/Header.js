@@ -103,7 +103,7 @@ function Header() {
                     }}
                     onClick={() => scrollToSection("faq")}
                   >
-                    Faq
+                    FAQ
                   </Link>
                   <Link
                     style={{
