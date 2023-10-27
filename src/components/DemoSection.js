@@ -71,7 +71,7 @@ const CarouselComponent = () => {
                   <h2>Share. Save. Repeat.</h2>
                   <p>
                     All our rides are shared and gender-segregated ensuring
-                    maximum sense of security while commuting.By sharing,you
+                    maximum sense of security while commuting.By sharing, you
                     reduce your commute expenditure as well as it helps
                     de-congesting our city.
                   </p>
